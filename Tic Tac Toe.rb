@@ -1,8 +1,14 @@
 require 'colorize'
+#Variables generales
+array_opciones=(1..9).to_a
+array_no_opciones = []
+array_jugadas = Array.new(9,"")
+step_jugadas = 0
 
 def creation_board (arr)
+    num_arr=arr.length - 1
     tablero = ""
-    for i in (0..8)
+    for i in (0..num_arr)
         posicion = " " + (i+1).to_s
         case arr[i]
             when "1"
@@ -11,7 +17,7 @@ def creation_board (arr)
                 posicion = " o".red
         end
         
-        if i < 8
+        if i < num_arr
             if i == 2 || i == 5
                 posicion += "\n-----------\n"
             else
@@ -38,11 +44,6 @@ def validate_winner (arr, last_player)
     return ""
 end
 
-#Variables generales
-array_opciones = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-array_no_opciones = []
-array_jugadas = Array.new(9,"")
-step_jugadas = 0
 #Juego
 puts "Bievenido al juego #️⃣  🐱  !!\n\n"
 puts "----------------------------------"
@@ -62,7 +63,7 @@ step_jugadas += 1
 puts "\n" + board + "\n\n"
 msj_computador = "El computador esta jugando\n\n"
 msj_persona = "Continua tu jugada, elige un número del tablero\n\n"
-for n in (1..4)
+for n in (1..((array_opciones.length - 1)/2))
     system "clear"
     if step_jugadas >= 5
         result = validate_winner(array_jugadas, "1")
@@ -81,7 +82,7 @@ for n in (1..4)
     if step_jugadas >= 5
         result = validate_winner(array_jugadas, "0")
         if result != ""
-            puts "El ganador es el computador!!! 😓  😓 Intentalo la proxima vez"
+            puts "El ganador es el computador!!! 😓  😓  Intentalo la proxima vez"
             break
         end
     end
