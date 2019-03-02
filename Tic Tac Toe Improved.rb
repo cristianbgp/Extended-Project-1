@@ -32,9 +32,9 @@ def creation_solution
             con_v = 0
         end
     end
-    puts @array_jugadas_winner.to_s
-    puts arr_vertical.to_s
-    puts arr_diagonal.to_s
+    # puts @array_jugadas_winner.to_s
+    # puts arr_vertical.to_s
+    # puts arr_diagonal.to_s
 
     @array_jugadas_winner = @array_jugadas_winner + arr_vertical + arr_diagonal
 end
